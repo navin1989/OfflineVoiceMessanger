@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="hello">Hello World, PocketSphinxAndroidDemo!</string>
+    <string name="app_name">PocketSphinx Demo</string>
+
+    <color name="white">#FFF</color>
+
+    <string name="performance_text">0.00 seconds 0.00 xRT</string>
+    <string name="ok">OK</string>
+    <string name="cancle">Cancel</string>
+    <string name="report">Report</string>
+    <string name="msg_report">Successfully reported.</string>
+    <string name="msg_ok">Job is Done successfully.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
