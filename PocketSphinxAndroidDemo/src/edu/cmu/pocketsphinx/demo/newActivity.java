@@ -1,5 +1,5 @@
 package edu.cmu.pocketsphinx.demo;
-
+//**************************************************************
 import java.util.ArrayList;
 import android.app.Activity;
 import android.database.Cursor;
