@@ -5,88 +5,92 @@
     android:background="@color/white"
     android:orientation="vertical" >
 
+    <EditText
+        android:id="@+id/txtMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_above="@+id/PerformanceText"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtPhonenum"
+        android:layout_weight="1"
+        android:contentDescription="Recognition results"
+        android:ems="10"
+        android:text="Text goes here..." />
+
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/txtPhonenum"
+        android:text="Contacts" />
+
+    
+
+    <EditText
+        android:id="@+id/txtPhonenum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtLabel"
+        android:layout_toRightOf="@+id/btnContacts"
+        android:ems="10"
+        android:inputType="phone" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/PerformanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnRecord"
+        android:layout_alignLeft="@+id/btnRecord"
+        android:text="@string/performance_text" />
+
+    <Button
+        android:id="@+id/btnInbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="inbox" />
 
-    <Button
-        android:id="@+id/button3"
+    <TextView
+        android:id="@+id/txtLabel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/PerformanceText"
-        android:text="speak" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/editText2"
-        android:text="Contacts" />
+        android:layout_alignParentTop="true"
+        android:text="                 Voice Based Messaging System" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSpeak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button3"
-        android:text="send" />
-
-    <EditText
-        android:id="@+id/EditText01"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_above="@+id/PerformanceText"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button4"
-        android:layout_weight="1"
-        android:contentDescription="Recognition results"
-        android:ems="10"
-        android:text="Text goes here..." />
-
-    <TextView
-        android:id="@+id/PerformanceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_toLeftOf="@+id/button2"
-        android:text="@string/performance_text" />
+        android:layout_alignRight="@+id/txtLabel"
+        android:layout_toRightOf="@+id/btnRecord"
+        android:text="speak" />
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/btnRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/PerformanceText"
+        android:layout_alignBaseline="@+id/btnInbox"
+        android:layout_alignBottom="@+id/btnInbox"
+        android:layout_toRightOf="@+id/btnInbox"
         android:layout_weight="0"
         android:background="@drawable/rect"
         android:text="Hold and Speak" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="                 Voice Based Messaging System" />
-
-    <EditText
-        android:id="@+id/editText2"
+    <Button
+        android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_toRightOf="@+id/button4"
-        android:ems="10"
-        android:inputType="phone" >
-
-        <requestFocus />
-    </EditText>
+        android:layout_toRightOf="@+id/btnSpeak"
+        android:text="Send" />
 
 </RelativeLayout>

@@ -119,45 +119,47 @@ public class PocketSphinxAndroidDemo extends Activity implements
 		this.rec = new RecognizerTask();
 		this.rec_thread = new Thread(this.rec);
 		this.listening = false;
-		Button b = (Button) findViewById(R.id.Button01);
+		Button b = (Button) findViewById(R.id.btnRecord);
 		b.setOnTouchListener(this);
 		this.performance_text = (TextView) findViewById(R.id.PerformanceText);
-		this.edit_text = (EditText) findViewById(R.id.EditText01);
+		this.edit_text = (EditText) findViewById(R.id.txtMessage);
 		this.rec.setRecognitionListener(this);
 		this.rec_thread.start();
 		
 		
-	    	 sendBtn = (Button) findViewById(R.id.button2);
-	      txtphoneNo = (EditText) findViewById(R.id.editText2);
-	      txtMessage = (EditText) findViewById(R.id.EditText01);
-
-	      sendBtn.setOnClickListener(new View.OnClickListener() {
-	         public void onClick(View view) {
-	            sendSMSMessage();
-	         }
-	         });
-
-			
-
-	
+		//send button instantiating
 		
-		//instantiating inbox button
-		Button btn = (Button) findViewById(R.id.button1);
-		btn.setOnClickListener(new OnClickListener() {
+		sendBtn = (Button) findViewById(R.id.btnSend);
+		txtphoneNo = (EditText) findViewById(R.id.txtPhonenum);
+		txtMessage = (EditText) findViewById(R.id.txtMessage);
+
+		sendBtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				sendSMSMessage();
+			}
+		});
+
 			
+	
+		//instantiating inbox button
+	      
+		Button btn = (Button) findViewById(R.id.btnInbox);
+		btn.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startsecond();
 			}
-		}); 
+		});
 
 			
 
 		// Instantiaon of button text to speech
+		
 		setupMessageButton();
-		Button messageButton = (Button) findViewById(R.id.button3);
-		write = (EditText) findViewById(R.id.EditText01);
+		Button messageButton = (Button) findViewById(R.id.btnSpeak);
+		write = (EditText) findViewById(R.id.txtMessage);
 		ttobj = new TextToSpeech(getApplicationContext(),
 				new TextToSpeech.OnInitListener() {
 					@Override
@@ -169,7 +171,7 @@ public class PocketSphinxAndroidDemo extends Activity implements
 
 				});
 
-		btnNormal = (Button) findViewById(R.id.button3);
+		btnNormal = (Button) findViewById(R.id.btnInbox);
 		btnNormal.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -180,13 +182,10 @@ public class PocketSphinxAndroidDemo extends Activity implements
 		});
 		
 
-		// instantiaon of button send message
-
-		
-
 		// Instantiation for contact browsing
-		btnContacts = (Button) findViewById(R.id.button4);
-		txtContacts = (TextView) findViewById(R.id.editText2);
+		
+		btnContacts = (Button) findViewById(R.id.btnContacts);
+		txtContacts = (TextView) findViewById(R.id.txtPhonenum);
 		btnContacts.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -197,12 +196,12 @@ public class PocketSphinxAndroidDemo extends Activity implements
 			}
 		});
 	}
-	
 
 	protected void startsecond() {
 		// TODO Auto-generated method stub
-		 startActivity(new Intent(PocketSphinxAndroidDemo.this,newActivity.class));
-		
+		startActivity(new Intent(PocketSphinxAndroidDemo.this,
+				newActivity.class));
+
 	}
 
 	private void setupMessageButton() {
@@ -256,9 +255,6 @@ public class PocketSphinxAndroidDemo extends Activity implements
 		builder.show();
 
 	}
-	
-
-	 
 
 	@Override
 	public void onActivityResult(int reqCode, int resultCode, Intent data) {
@@ -279,25 +275,25 @@ public class PocketSphinxAndroidDemo extends Activity implements
 			break;
 		}
 	}
-	
+
 	protected void sendSMSMessage() {
-	      Log.i("Send SMS", "");
+		Log.i("Send SMS", "");
 
-	      String phoneNo = txtphoneNo.getText().toString();
-	      String message = txtMessage.getText().toString();
+		String phoneNo = txtphoneNo.getText().toString();
+		String message = txtMessage.getText().toString();
 
-	      try {
-	         SmsManager smsManager = SmsManager.getDefault();
-	         smsManager.sendTextMessage(phoneNo, null, message, null, null);
-	         Toast.makeText(getApplicationContext(), "SMS sent.",
-	         Toast.LENGTH_LONG).show();
-	      } catch (Exception e) {
-	         Toast.makeText(getApplicationContext(),
-	         "SMS faild, check fields and try again.",
-	         Toast.LENGTH_LONG).show();
-	         e.printStackTrace();
-	      }
-	   }
+		try {
+			SmsManager smsManager = SmsManager.getDefault();
+			smsManager.sendTextMessage(phoneNo, null, message, null, null);
+			Toast.makeText(getApplicationContext(), "SMS sent.",
+					Toast.LENGTH_LONG).show();
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(),
+					"SMS faild, check fields and try again.", Toast.LENGTH_LONG)
+					.show();
+			e.printStackTrace();
+		}
+	}
 
 	/** Called when partial results are generated. */
 	@Override

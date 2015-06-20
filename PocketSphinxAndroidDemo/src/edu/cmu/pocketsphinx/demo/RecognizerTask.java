@@ -149,10 +149,7 @@ public class RecognizerTask implements Runnable {
 		pocketsphinx
 				.setLogfile("/mnt/sdcard/edu.cmu.pocketsphinx/pocketsphinx.log");
 		Config c = new Config();
-		/*
-		 * In 2.2 and above we can use getExternalFilesDir() or whatever it's
-		 * called
-		 */
+
 		c.setString("-hmm",
 				"/mnt/sdcard/edu.cmu.pocketsphinx/hmm/en_US/hub4wsj_sc_8k");
 
@@ -161,15 +158,7 @@ public class RecognizerTask implements Runnable {
 
 		c.setString("-lm",
 				"/mnt/sdcard/edu.cmu.pocketsphinx/im/en_US/hub4.5000.DMP");
-		/*
-		 * c.setString("-hmm",
-		 * "/sdcard/Android/data/edu.cmu.pocketsphinx/hmm/zh/tdt_sc_8k");
-		 * c.setString("-dict",
-		 * "/sdcard/Android/data/edu.cmu.pocketsphinx/lm/zh_TW/mandarin_notone.dic"
-		 * ); c.setString("-lm",
-		 * "/sdcard/Android/data/edu.cmu.pocketsphinx/lm/zh_TW/gigatdt.5000.DMP"
-		 * );
-		 */
+
 		c.setString("-rawlogdir", "/mnt/sdcard/edu.cmu.pocketsphinx");
 		c.setFloat("-samprate", 8000.0);
 		c.setInt("-maxhmmpf", 2000);
