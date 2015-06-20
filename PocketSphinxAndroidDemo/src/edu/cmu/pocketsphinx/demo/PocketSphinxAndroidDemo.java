@@ -104,10 +104,9 @@ public class PocketSphinxAndroidDemo extends Activity implements
 	Button sendBtn;
 	EditText txtphoneNo;
 	EditText txtMessage;
-	
+
 	private Button btnContacts;
 	private TextView txtContacts;
-	
 
 	public static final int PICK_CONTACT = 1;
 
@@ -125,10 +124,9 @@ public class PocketSphinxAndroidDemo extends Activity implements
 		this.edit_text = (EditText) findViewById(R.id.txtMessage);
 		this.rec.setRecognitionListener(this);
 		this.rec_thread.start();
-		
-		
-		//send button instantiating
-		
+
+		// send button instantiating
+
 		sendBtn = (Button) findViewById(R.id.btnSend);
 		txtphoneNo = (EditText) findViewById(R.id.txtPhonenum);
 		txtMessage = (EditText) findViewById(R.id.txtMessage);
@@ -139,10 +137,8 @@ public class PocketSphinxAndroidDemo extends Activity implements
 			}
 		});
 
-			
-	
-		//instantiating inbox button
-	      
+		// instantiating inbox button
+
 		Button btn = (Button) findViewById(R.id.btnInbox);
 		btn.setOnClickListener(new OnClickListener() {
 
@@ -153,10 +149,8 @@ public class PocketSphinxAndroidDemo extends Activity implements
 			}
 		});
 
-			
-
 		// Instantiaon of button text to speech
-		
+
 		setupMessageButton();
 		Button messageButton = (Button) findViewById(R.id.btnSpeak);
 		write = (EditText) findViewById(R.id.txtMessage);
@@ -171,7 +165,7 @@ public class PocketSphinxAndroidDemo extends Activity implements
 
 				});
 
-		btnNormal = (Button) findViewById(R.id.btnInbox);
+		btnNormal = (Button) findViewById(R.id.btnSpeak);
 		btnNormal.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -180,10 +174,9 @@ public class PocketSphinxAndroidDemo extends Activity implements
 			}
 
 		});
-		
 
 		// Instantiation for contact browsing
-		
+
 		btnContacts = (Button) findViewById(R.id.btnContacts);
 		txtContacts = (TextView) findViewById(R.id.txtPhonenum);
 		btnContacts.setOnClickListener(new OnClickListener() {
@@ -195,6 +188,16 @@ public class PocketSphinxAndroidDemo extends Activity implements
 				startActivityForResult(intent, PICK_CONTACT);
 			}
 		});
+		
+		// code for get the inbox selected message to text edit
+
+		TextView txtProduct = (TextView) findViewById(R.id.txtMessage);
+
+		Intent i = getIntent();
+		// getting attached intent data
+		String product = i.getStringExtra("product");
+		// displaying selected product name
+		txtProduct.setText(product);
 	}
 
 	protected void startsecond() {
