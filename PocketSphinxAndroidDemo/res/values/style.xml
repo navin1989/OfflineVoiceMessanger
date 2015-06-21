@@ -2,7 +2,7 @@
 <resources>
 
     <style name="myTheme" parent="@android:style/Theme.Black">
-        <item name="android:textColor">#FF0000</item>
+         <item name="android:textColor">#FF0000</item>
     </style>
 
     
