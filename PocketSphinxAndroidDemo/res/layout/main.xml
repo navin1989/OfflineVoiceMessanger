@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:weightSum="100" >
+    android:orientation="vertical" >
 
     <EditText
         android:id="@+id/txtMessage"
@@ -12,40 +11,17 @@
         android:layout_above="@+id/PerformanceText"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/btnContacts"
-        android:layout_weight="5"
         android:contentDescription="Recognition results"
         android:ems="10"
         android:text="Text goes here..." />
 
     <TextView
-        android:id="@+id/PerformanceText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnRecord"
-        android:layout_alignLeft="@+id/btnRecord"
-        android:text="@string/performance_text" />
-
-    <TextView
         android:id="@+id/txtLabel"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="                 Voice Based Messaging System" />
-
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/btnSpeak"
-        android:layout_toRightOf="@+id/btnSpeak"
-        android:background="@null"
-        android:drawableTop="@drawable/btn_send"
-        android:text="Send"
-        android:textColor="@android:color/white" />
 
     <EditText
         android:id="@+id/txtPhonenum"
@@ -53,59 +29,73 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/txtLabel"
-        android:layout_toRightOf="@+id/btnInbox"
+        android:layout_toRightOf="@+id/btnContacts"
         android:ems="10"
         android:inputType="phone" >
 
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/btnRecord"
+    <TextView
+        android:id="@+id/PerformanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="10"
-        android:layout_alignLeft="@+id/txtPhonenum"
+        android:layout_above="@+id/btnRecord"
+        android:layout_centerHorizontal="true"
+        android:text="@string/performance_text" />
+
+    <Button
+        android:id="@+id/btnContacts"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/txtPhonenum"
+        android:layout_alignParentLeft="true"
+        android:background="@null"
+        android:drawableTop="@drawable/btn_contacts"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="23dp"
-        
-        android:text="Hold and Speak" />
+        android:layout_toRightOf="@+id/txtLabel"
+        android:background="@null"
+        android:drawableTop="@drawable/btn_send"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnInbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/btnRecord"
+        android:layout_toLeftOf="@+id/txtPhonenum"
         android:layout_weight="5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/btnRecord"
-        android:layout_marginLeft="14dp"
-        
         android:background="@null"
         android:drawableTop="@drawable/btn_inbox"
-        android:text="inbox"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnRecord"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_alignBaseline="@+id/btnSpeak"
+        android:layout_alignBottom="@+id/btnSpeak"
+        android:layout_alignLeft="@+id/PerformanceText"
+        android:layout_weight="10"
+        android:background="@null"
+        android:drawableTop="@drawable/btn_record"
         android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnSpeak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/PerformanceText"
-        android:layout_weight="5"
+        android:layout_alignRight="@+id/PerformanceText"
+        android:layout_marginRight="14dp"
         android:background="@null"
         android:drawableTop="@drawable/btn_speak"
-        android:text="speak"
-        android:textColor="@android:color/white" />
-
-    <Button
-        android:id="@+id/btnContacts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnInbox"
-        android:layout_alignTop="@+id/txtPhonenum"
-        android:layout_weight="5"
-        android:background="@null"
-        android:drawableTop="@drawable/btn_contacts"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>
