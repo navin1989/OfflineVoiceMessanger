@@ -3,12 +3,38 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
- 
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnContacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="23dp"
+            android:background="@null"
+            android:drawableTop="@drawable/btn_contacts" />
+
+        <EditText
+            android:id="@+id/txtPhonenum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:ems="10"
+            android:inputType="phone" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#ff888888"
         android:orientation="horizontal" >
 
         <Button
@@ -56,38 +82,17 @@
         android:layout_centerHorizontal="true"
         android:text="@string/performance_text" />
 
-        <EditText
-            android:id="@+id/txtMessage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/PerformanceText"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtPhonenum"
-            android:ems="10"
-            android:text="Text goes here..." >
+    <EditText
+        android:id="@+id/txtMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/PerformanceText"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:ems="10"
+        android:text="Text goes here..." >
 
-            <requestFocus />
-        </EditText>
-
-        <EditText
-            android:id="@+id/txtPhonenum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="22dp"
-            android:layout_toRightOf="@+id/btnContacts"
-            android:ems="10"
-            android:inputType="phone" />
-
-        <Button
-            android:id="@+id/btnContacts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/txtPhonenum"
-            android:layout_marginLeft="15dp"
-            android:background="@null"
-            android:drawableTop="@drawable/btn_contacts" />
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

@@ -188,7 +188,7 @@ public class PocketSphinxAndroidDemo extends Activity implements
 				startActivityForResult(intent, PICK_CONTACT);
 			}
 		});
-		
+
 		// code for get the inbox selected message to text edit
 
 		TextView txtProduct = (TextView) findViewById(R.id.txtMessage);
