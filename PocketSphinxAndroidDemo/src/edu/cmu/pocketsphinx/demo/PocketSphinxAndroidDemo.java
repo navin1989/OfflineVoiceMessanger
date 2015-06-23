@@ -201,7 +201,7 @@ public class PocketSphinxAndroidDemo extends Activity implements
 	}
 
 	protected void startsecond() {
-		// TODO Auto-generated method stub
+		
 		startActivity(new Intent(PocketSphinxAndroidDemo.this,
 				newActivity.class));
 
