@@ -46,8 +46,7 @@ public class newActivity extends Activity {
 			mlistView.setAdapter(new datalist(newActivity.this));
 			
 			mlistView.setOnItemClickListener(new OnItemClickListener() {
-
-				@Override
+			@Override
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 
@@ -61,8 +60,7 @@ public class newActivity extends Activity {
 					startActivity(i);
 				}
 			});
-		}
-		
+		}	
 		else {
 
 			Toast.makeText(getApplicationContext(), "No SMS", 4).show();
