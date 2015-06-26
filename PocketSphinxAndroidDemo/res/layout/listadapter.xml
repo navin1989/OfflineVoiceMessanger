@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
          >
+        
 
         <ImageView
             android:id="@+id/inboxImage"
@@ -43,13 +44,13 @@
             android:textColor="#FFFFFF" />
 
         <CheckBox
-            android:id="@+id/txtBox"
+            android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtSender"
-             android:background="@null"
-           />
+            android:layout_below="@+id/txtBody"
+            android:focusable="false"
+            android:textColor="#B40404" />
 
     </RelativeLayout>
 
