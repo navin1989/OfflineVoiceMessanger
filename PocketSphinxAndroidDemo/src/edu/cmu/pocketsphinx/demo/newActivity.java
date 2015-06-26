@@ -39,6 +39,12 @@ import android.widget.Toast;
 public class newActivity extends ActionBarActivity {
 	ListView mlistView;
 	ArrayList<Message> sms = new ArrayList<Message>();
+	Context context;
+	LayoutInflater inflater;
+	List<Message> Messagelist;
+	private SparseBooleanArray mSelectedItemsIds;
+	ListViewAdapter listviewadapter;
+	List<Message> Mlist = new ArrayList<Message>();
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,42 @@ public class newActivity extends ActionBarActivity {
 		});
 		
 	}
+	public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+		 switch (item.getItemId()) {
+		 case R.id.btnDelete:
+		 // Calls getSelectedIds method from ListViewAdapter Class
+		 SparseBooleanArray selected = listviewadapter.getSelectedIds();
+		 // Captures all selected ids with a loop
+		 for (int i = (selected.size() - 1); i >= 0; i--) {
+		 if (selected.valueAt(i)) {
+		 Message selecteditem = listviewadapter
+		 .getItem(selected.keyAt(i));
+		 // Remove selected items following the ids
+		 ((List<Message>) listviewadapter).remove(selecteditem);
+		 }
+		 }
+		 // Close CAB
+		 mode.finish();
+		 return true;
+		 default:
+		 return false;
+		 }
+		
+		 }
+		 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+		 mode.getMenuInflater().inflate(R.layout.second, menu);
+		 return true;
+		 }
+		
+		 public void onDestroyActionMode(ActionMode mode) {
+		 // TODO Auto-generated method stub
+		 listviewadapter.removeSelection();
+		 }
+
+		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 
 	
 
