@@ -43,10 +43,8 @@ public class newActivity extends Activity {
 	List<Message> Messagelist;
 	private SparseBooleanArray mSelectedItemsIds;
 	ListView list;
-	ListViewAdapter listviewadapter;
+	// ListViewAdapter listviewadapter;
 	List<Message> worldpopulationlist = new ArrayList<Message>();
-//	ListViewAdapter listviewadapter;
-
 
 	/** Called when the activity is first created. */
 	@Override
@@ -55,65 +53,62 @@ public class newActivity extends Activity {
 		setContentView(R.layout.second);
 		mlistView = (ListView) findViewById(R.id.msgView);
 		populateMessageList();
-		
-		listviewadapter = new ListViewAdapter(this, R.layout.second,Message);
-	}
-		
-		public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-			switch (item.getItemId()) {
-			case R.id.btnDelete:
-				// Calls getSelectedIds method from ListViewAdapter Class
-				SparseBooleanArray selected = listviewadapter.getSelectedIds();
-				// Captures all selected ids with a loop
-				for (int i = (selected.size() - 1); i >= 0; i--) {
-					if (selected.valueAt(i)) {
-						Message selecteditem = listviewadapter
-								.getItem(selected.keyAt(i));
-						// Remove selected items following the ids
-						((List<Message>) listviewadapter).remove(selecteditem);
-					}
-				}
-				// Close CAB
-				mode.finish();
-				return true;
-		    	default:
-				return false;
+
+		// listviewadapter = new ListViewAdapter(this, R.layout.second,Message)
+
+		Button btn = (Button) findViewById(R.id.btnCopy);
+		btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				StartMain();
 			}
-		}
 
-		
-		public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-			mode.getMenuInflater().inflate(R.layout.second, menu);
-			return true;
-		}
+			private void StartMain() {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(newActivity.this,
+						PocketSphinxAndroidDemo.class));
+			}
+		});
+	}
 
-		public void onDestroyActionMode(ActionMode mode) {
-			// TODO Auto-generated method stub
-			listviewadapter.removeSelection();
-		}
+	// public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+	// switch (item.getItemId()) {
+	// case R.id.btnDelete:
+	// // Calls getSelectedIds method from ListViewAdapter Class
+	// SparseBooleanArray selected = listviewadapter.getSelectedIds();
+	// // Captures all selected ids with a loop
+	// for (int i = (selected.size() - 1); i >= 0; i--) {
+	// if (selected.valueAt(i)) {
+	// Message selecteditem = listviewadapter
+	// .getItem(selected.keyAt(i));
+	// // Remove selected items following the ids
+	// ((List<Message>) listviewadapter).remove(selecteditem);
+	// }
+	// }
+	// // Close CAB
+	// mode.finish();
+	// return true;
+	// default:
+	// return false;
+	// }
+	//
+	// }
+	// public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+	// mode.getMenuInflater().inflate(R.layout.second, menu);
+	// return true;
+	// }
+	//
+	// public void onDestroyActionMode(ActionMode mode) {
+	// // TODO Auto-generated method stub
+	// listviewadapter.removeSelection();
+	// }
 
-	
-		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-			// TODO Auto-generated method stub
-			return false;
-		}		
-		
-//		Button btn = (Button) findViewById(R.id.btnDelete);
-//		btn.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				startsecond();
-//			}
-//
-//			private void startsecond() {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
-//		
-	
+	public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	public void populateMessageList() {
 		fetchInboxMessages();
