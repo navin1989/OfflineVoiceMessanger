@@ -28,15 +28,6 @@ public class deleteCheckList extends ArrayAdapter<Message> {
 		MessageList.remove(object);
 		notifyDataSetChanged();
 	}
- 
-//	public List<Message> getWorldPopulation() {
-//		return MessageList;
-//	}
-// 
-//	public void toggleSelection(int position) {
-//		selectView(position, !mSelectedItemsIds.get(position));
-//	}
- 
 	public void removeSelection() {
 		mSelectedItemsIds = new SparseBooleanArray();
 		notifyDataSetChanged();

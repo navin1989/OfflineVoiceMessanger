@@ -15,5 +15,10 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
+    <string-array name="menu">
+		<item>Edit</item>
+		<item>Delete</item>
+		<item>Send</item>
+	</string-array>
 </resources>
