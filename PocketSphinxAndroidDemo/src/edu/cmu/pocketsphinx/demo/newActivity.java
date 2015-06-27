@@ -36,91 +36,89 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class newActivity extends ActionBarActivity {
+public class newActivity extends Activity {
 	ListView mlistView;
 	ArrayList<Message> sms = new ArrayList<Message>();
-	Context context;
-	LayoutInflater inflater;
-	List<MessageDel> Messagelist;
-	private SparseBooleanArray mSelectedItemsIds;
-	//ListViewAdapter listviewadapter;
-	List<MessageDel> Mlist = new ArrayList<MessageDel>();
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second);
+
 		mlistView = (ListView) findViewById(R.id.msgView);
 		populateMessageList();
 
-		Button btn = (Button) findViewById(R.id.btnCopy);
-		btn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				StartMain();
-			}
-
-			private void StartMain() {
-				// TODO Auto-generated method stub
-				startActivity(new Intent(newActivity.this,
-						PocketSphinxAndroidDemo.class));
-			}
-		});
-		
 	}
-//	public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-//		 switch (item.getItemId()) {
-//		 case R.id.btnDelete:
-//		 // Calls getSelectedIds method from ListViewAdapter Class
-//		 SparseBooleanArray selected = listviewadapter.getSelectedIds();
-//		 // Captures all selected ids with a loop
-//		 for (int i = (selected.size() - 1); i >= 0; i--) {
-//		 if (selected.valueAt(i)) {
-//		 Message selecteditem = listviewadapter
-//		 .getItem(selected.keyAt(i));
-//		 // Remove selected items following the ids
-//		 ((List<Message>) listviewadapter).remove(selecteditem);
-//		 }
-//		 }
-//		 // Close CAB
-//		 mode.finish();
-//		 return true;
-//		 default:
-//		 return false;
-//		 }
-//		
-//		 }
-//		 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-//		 mode.getMenuInflater().inflate(R.layout.second, menu);
-//		 return true;
-//		 }
-//		
-//		 public void onDestroyActionMode(ActionMode mode) {
-//		 // TODO Auto-generated method stub
-//		 listviewadapter.removeSelection();
-//		 }
-
-		public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
 	
-
 	public void populateMessageList() {
 		fetchInboxMessages();
 
 		if (fetchInboxMessages() != null) {
 
 			mlistView.setAdapter(new datalist(newActivity.this));
-		} else {
+		} else
+		{
 
 			Toast.makeText(getApplicationContext(), "No SMS", 4).show();
 		}
-	}
 
+		//_______________________________________________________________________________
+
+	     	 mlistView.setOnItemClickListener(new OnItemClickListener() {
+			 @Override
+			 public void onItemClick(AdapterView<?> parent, View view,
+			 int position, long id) {
+		     fetchInboxMessages();		     
+			 String product = (fetchInboxMessage()).toString();
+			 
+			 // Launching new Activity on selecting single List Item
+			 Intent i = new Intent(getApplicationContext(),
+			 PocketSphinxAndroidDemo.class);
+			 // sending data to new activity
+			 i.putExtra("product", product);
+			 startActivity(i);
+			 }
+			 });
+			Button btn = (Button) findViewById(R.id.btnCopy);
+			btn.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					StartMain();
+				}
+
+				private void StartMain() {
+					// TODO Auto-generated method stub
+					startActivity(new Intent(newActivity.this,
+							PocketSphinxAndroidDemo.class));
+				}
+			});
+	}
+	
+	
+	public ArrayList fetchInboxMessage() {
+
+		ArrayList sms = new ArrayList();
+		 
+        Uri uriSms = Uri.parse("content://sms/inbox");
+        Cursor cursor = getContentResolver().query(uriSms, new String[]{"_id", "address", "date", "body"},null,null,null);
+ 
+        cursor.moveToFirst();
+        while  (cursor.moveToNext())
+        {
+               String address = cursor.getString(1);
+               String body = cursor.getString(3);
+ 
+               sms.add(body);
+        }
+        return sms;
+ 
+    }
+
+	
+//_______________________________________________________________________________________________________________________________________
 	public ArrayList<Message> fetchInboxMessages() {
 
 		Uri muriSms = Uri.parse("content://sms/inbox");
